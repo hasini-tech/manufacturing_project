@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// 👇 IMPORT ALL YOUR IMAGES HERE 👇
+// Make sure the path matches your actual folder structure!
+import heroBg from '../assets/images/imagelogo.png'; // <--- Change to your actual background image filename
+import productImg1 from '../assets/images/imagemanufacture.png';
+import productImg2 from '../assets/images/manufacture10.png';
+import productImg3 from '../assets/images/manufacture2.png';
+
 const Home = () => {
   const styles = {
     hero: {
       height: 600,
-      background: 'linear-gradient(135deg, rgba(26,62,111,0.9) 0%, rgba(0,0,0,0.7) 100%), url("https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80") center/cover',
+      // 👇 Updated to use the imported background image using template literals (` `) 👇
+      background: `linear-gradient(135deg, rgba(26,62,111,0.9) 0%, rgba(0,0,0,0.7) 100%), url(${heroBg}) center/cover`,
       display: 'flex',
       alignItems: 'center',
       color: '#fff'
@@ -65,7 +73,8 @@ const Home = () => {
     },
     featuresGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
+      // Made responsive for mobile/tablet
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
       gap: 30
     },
     featureCard: {
@@ -90,7 +99,8 @@ const Home = () => {
     },
     productsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      // Made responsive for mobile/tablet
+      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
       gap: 30
     },
     productCard: {
@@ -135,9 +145,21 @@ const Home = () => {
   ];
 
   const products = [
-    { name: 'Industrial Machinery', desc: 'Heavy-duty machinery for industrial applications', img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-    { name: 'Precision Components', desc: 'High-precision components for various industries', img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-    { name: 'Automation Systems', desc: 'Complete automation solutions for manufacturing', img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }
+    { 
+      name: 'Industrial Machinery', 
+      desc: 'Heavy-duty machinery for industrial applications', 
+      img: productImg1 // Using imported image
+    },
+    { 
+      name: 'Precision Components', 
+      desc: 'High-precision components for various industries', 
+      img: productImg2 // Using imported image
+    },
+    { 
+      name: 'Automation Systems', 
+      desc: 'Complete automation solutions for manufacturing', 
+      img: productImg3 // Using imported image
+    }
   ];
 
   return (

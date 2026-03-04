@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 
+// 👇 EXISTING IMAGES 👇
+import machineryImg from '../assets/images/imagemanufacture.png';
+import componentsImg from '../assets/images/manufacture10.png';
+import automationImg from '../assets/images/manufacture2.png';
+import toolsImg from '../assets/images/manufacture3.png';
+import customImg from '../assets/images/manufacture4.png';
+import cncImg from '../assets/images/manufacture5.png';
+
+// 👇 NEW IMAGES ADDED HERE 👇
+// Change 'manufacture6.png' etc. to your actual new image filenames!
+import newProductImg1 from '../assets/images/manufacture7.png'; 
+import newProductImg2 from '../assets/images/manufacture8.png';
+import newProductImg3 from '../assets/images/manufacture10.png';
+
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -28,7 +42,8 @@ const Products = () => {
     },
     productsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      // 👇 IMPROVED: This makes the grid fully responsive for mobile & desktop automatically!
+      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
       gap: 30
     },
     productCard: {
@@ -77,7 +92,10 @@ const Products = () => {
       borderRadius: 5,
       transition: 'background-color 0.3s ease',
       border: 'none',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      width: '100%',
+      textAlign: 'center',
+      fontWeight: 'bold'
     },
     categoryFilter: {
       display: 'flex',
@@ -103,7 +121,7 @@ const Products = () => {
       category: 'machinery',
       name: 'Industrial Machinery',
       description: 'Heavy-duty machinery for industrial applications with advanced automation capabilities.',
-      image: '/images/product-machinery.jpg',
+      image: machineryImg, 
       features: ['High precision', 'Automated controls', 'Energy efficient', 'Durable construction']
     },
     {
@@ -111,7 +129,7 @@ const Products = () => {
       category: 'components',
       name: 'Precision Components',
       description: 'High-precision components manufactured to exact specifications for various industries.',
-      image: '/images/product-components.jpg',
+      image: componentsImg, 
       features: ['Tight tolerances', 'Various materials', 'Quality certified', 'Custom designs']
     },
     {
@@ -119,7 +137,7 @@ const Products = () => {
       category: 'automation',
       name: 'Automation Systems',
       description: 'Complete automation solutions for manufacturing processes and production lines.',
-      image: '/images/product-automation.jpg',
+      image: automationImg, 
       features: ['PLC integration', 'Robotic systems', 'SCADA software', 'Remote monitoring']
     },
     {
@@ -127,7 +145,7 @@ const Products = () => {
       category: 'tools',
       name: 'Tools & Equipment',
       description: 'Professional-grade tools and equipment for industrial and commercial use.',
-      image: '/images/product-tools.jpg',
+      image: toolsImg, 
       features: ['Ergonomic design', 'Long-lasting', 'Safety features', 'Warranty included']
     },
     {
@@ -135,7 +153,7 @@ const Products = () => {
       category: 'custom',
       name: 'Custom Solutions',
       description: 'Tailored manufacturing solutions designed to meet specific client requirements.',
-      image: '/images/product-custom.jpg',
+      image: customImg, 
       features: ['Personalized design', 'Prototype development', 'Full support', 'Flexible production']
     },
     {
@@ -143,8 +161,33 @@ const Products = () => {
       category: 'machinery',
       name: 'CNC Machines',
       description: 'Computer-controlled machining centers for high-precision manufacturing.',
-      image: '/images/product-cnc.jpg',
+      image: cncImg, 
       features: ['Multi-axis control', 'High speed', 'Precision tools', 'Easy programming']
+    },
+    // 👇 NEW PRODUCTS ADDED HERE 👇
+    {
+      id: 7,
+      category: 'automation',
+      name: 'Smart Sensors',
+      description: 'IoT-enabled industrial sensors for real-time monitoring and predictive maintenance.',
+      image: newProductImg1, // Using your newly imported image
+      features: ['Real-time tracking', 'IoT Cloud integration', 'High accuracy', 'Easy installation']
+    },
+    {
+      id: 8,
+      category: 'components',
+      name: 'Hydraulic Valves',
+      description: 'Heavy-duty hydraulic directional control valves for extreme pressure environments.',
+      image: newProductImg2, // Using your newly imported image
+      features: ['High pressure rated', 'Corrosion resistant', 'Leak-proof seals', 'Fast response time']
+    },
+    {
+      id: 9,
+      category: 'tools',
+      name: 'Welding Stations',
+      description: 'Advanced TIG/MIG welding stations with digital displays and precise heat control.',
+      image: newProductImg3, // Using your newly imported image
+      features: ['Digital display', 'Multi-process capable', 'Overheat protection', 'Inverter technology']
     }
   ];
 
