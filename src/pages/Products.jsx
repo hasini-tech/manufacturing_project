@@ -1,199 +1,30 @@
+// scr/component/Product.jsx 
 import React, { useState } from 'react';
 
-// 👇 EXISTING IMAGES 👇
 import machineryImg from '../assets/images/imagemanufacture.png';
 import componentsImg from '../assets/images/manufacture10.png';
 import automationImg from '../assets/images/manufacture2.png';
 import toolsImg from '../assets/images/manufacture3.png';
 import customImg from '../assets/images/manufacture4.png';
 import cncImg from '../assets/images/manufacture5.png';
-
-// 👇 NEW IMAGES ADDED HERE 👇
-// Change 'manufacture6.png' etc. to your actual new image filenames!
-import newProductImg1 from '../assets/images/manufacture7.png'; 
+import newProductImg1 from '../assets/images/manufacture7.png';
 import newProductImg2 from '../assets/images/manufacture8.png';
 import newProductImg3 from '../assets/images/manufacture10.png';
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const styles = {
-    pageHeader: {
-      background: 'linear-gradient(135deg, #1a3e6f 0%, #2a4f8a 100%)',
-      color: '#fff',
-      padding: '60px 0',
-      textAlign: 'center'
-    },
-    pageTitle: {
-      fontSize: 48,
-      marginBottom: 20
-    },
-    pageSubtitle: {
-      fontSize: 18,
-      opacity: 0.9
-    },
-    container: {
-      maxWidth: 1200,
-      margin: '0 auto',
-      padding: '0 20px'
-    },
-    section: {
-      padding: '80px 0'
-    },
-    productsGrid: {
-      display: 'grid',
-      // 👇 IMPROVED: This makes the grid fully responsive for mobile & desktop automatically!
-      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-      gap: 30
-    },
-    productCard: {
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      overflow: 'hidden',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      transition: 'transform 0.3s ease'
-    },
-    productImage: {
-      width: '100%',
-      height: 250,
-      objectFit: 'cover'
-    },
-    productContent: {
-      padding: 20
-    },
-    productTitle: {
-      color: '#1a3e6f',
-      marginBottom: 10,
-      fontSize: 24
-    },
-    productDesc: {
-      color: '#666',
-      marginBottom: 15,
-      lineHeight: 1.6
-    },
-    productFeatures: {
-      listStyle: 'none',
-      padding: 0,
-      marginBottom: 20
-    },
-    featureItem: {
-      color: '#666',
-      marginBottom: 8,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8
-    },
-    btn: {
-      display: 'inline-block',
-      padding: '10px 25px',
-      backgroundColor: '#ff6b35',
-      color: '#fff',
-      textDecoration: 'none',
-      borderRadius: 5,
-      transition: 'background-color 0.3s ease',
-      border: 'none',
-      cursor: 'pointer',
-      width: '100%',
-      textAlign: 'center',
-      fontWeight: 'bold'
-    },
-    categoryFilter: {
-      display: 'flex',
-      justifyContent: 'center',
-      gap: 15,
-      marginBottom: 40,
-      flexWrap: 'wrap'
-    },
-    filterBtn: {
-      padding: '10px 20px',
-      backgroundColor: '#f0f0f0',
-      border: 'none',
-      borderRadius: 5,
-      cursor: 'pointer',
-      fontSize: 16,
-      transition: 'all 0.3s ease'
-    }
-  };
-
   const products = [
-    {
-      id: 1,
-      category: 'machinery',
-      name: 'Industrial Machinery',
-      description: 'Heavy-duty machinery for industrial applications with advanced automation capabilities.',
-      image: machineryImg, 
-      features: ['High precision', 'Automated controls', 'Energy efficient', 'Durable construction']
-    },
-    {
-      id: 2,
-      category: 'components',
-      name: 'Precision Components',
-      description: 'High-precision components manufactured to exact specifications for various industries.',
-      image: componentsImg, 
-      features: ['Tight tolerances', 'Various materials', 'Quality certified', 'Custom designs']
-    },
-    {
-      id: 3,
-      category: 'automation',
-      name: 'Automation Systems',
-      description: 'Complete automation solutions for manufacturing processes and production lines.',
-      image: automationImg, 
-      features: ['PLC integration', 'Robotic systems', 'SCADA software', 'Remote monitoring']
-    },
-    {
-      id: 4,
-      category: 'tools',
-      name: 'Tools & Equipment',
-      description: 'Professional-grade tools and equipment for industrial and commercial use.',
-      image: toolsImg, 
-      features: ['Ergonomic design', 'Long-lasting', 'Safety features', 'Warranty included']
-    },
-    {
-      id: 5,
-      category: 'custom',
-      name: 'Custom Solutions',
-      description: 'Tailored manufacturing solutions designed to meet specific client requirements.',
-      image: customImg, 
-      features: ['Personalized design', 'Prototype development', 'Full support', 'Flexible production']
-    },
-    {
-      id: 6,
-      category: 'machinery',
-      name: 'CNC Machines',
-      description: 'Computer-controlled machining centers for high-precision manufacturing.',
-      image: cncImg, 
-      features: ['Multi-axis control', 'High speed', 'Precision tools', 'Easy programming']
-    },
-    // 👇 NEW PRODUCTS ADDED HERE 👇
-    {
-      id: 7,
-      category: 'automation',
-      name: 'Smart Sensors',
-      description: 'IoT-enabled industrial sensors for real-time monitoring and predictive maintenance.',
-      image: newProductImg1, // Using your newly imported image
-      features: ['Real-time tracking', 'IoT Cloud integration', 'High accuracy', 'Easy installation']
-    },
-    {
-      id: 8,
-      category: 'components',
-      name: 'Hydraulic Valves',
-      description: 'Heavy-duty hydraulic directional control valves for extreme pressure environments.',
-      image: newProductImg2, // Using your newly imported image
-      features: ['High pressure rated', 'Corrosion resistant', 'Leak-proof seals', 'Fast response time']
-    },
-    {
-      id: 9,
-      category: 'tools',
-      name: 'Welding Stations',
-      description: 'Advanced TIG/MIG welding stations with digital displays and precise heat control.',
-      image: newProductImg3, // Using your newly imported image
-      features: ['Digital display', 'Multi-process capable', 'Overheat protection', 'Inverter technology']
-    }
+    { id: 1, category: 'machinery', name: 'Industrial Machinery', description: 'Heavy-duty machinery for industrial applications with advanced automation capabilities.', image: machineryImg, features: ['High precision', 'Automated controls', 'Energy efficient', 'Durable construction'] },
+    { id: 2, category: 'components', name: 'Precision Components', description: 'High-precision components manufactured to exact specifications for various industries.', image: componentsImg, features: ['Tight tolerances', 'Various materials', 'Quality certified', 'Custom designs'] },
+    { id: 3, category: 'automation', name: 'Automation Systems', description: 'Complete automation solutions for manufacturing processes and production lines.', image: automationImg, features: ['PLC integration', 'Robotic systems', 'SCADA software', 'Remote monitoring'] },
+    { id: 4, category: 'tools', name: 'Tools & Equipment', description: 'Professional-grade tools and equipment for industrial and commercial use.', image: toolsImg, features: ['Ergonomic design', 'Long-lasting', 'Safety features', 'Warranty included'] },
+    { id: 5, category: 'custom', name: 'Custom Solutions', description: 'Tailored manufacturing solutions designed to meet specific client requirements.', image: customImg, features: ['Personalized design', 'Prototype development', 'Full support', 'Flexible production'] },
+    { id: 6, category: 'machinery', name: 'CNC Machines', description: 'Computer-controlled machining centers for high-precision manufacturing.', image: cncImg, features: ['Multi-axis control', 'High speed', 'Precision tools', 'Easy programming'] },
+    { id: 7, category: 'automation', name: 'Smart Sensors', description: 'IoT-enabled industrial sensors for real-time monitoring and predictive maintenance.', image: newProductImg1, features: ['Real-time tracking', 'IoT Cloud integration', 'High accuracy', 'Easy installation'] },
+    { id: 8, category: 'components', name: 'Hydraulic Valves', description: 'Heavy-duty hydraulic directional control valves for extreme pressure environments.', image: newProductImg2, features: ['High pressure rated', 'Corrosion resistant', 'Leak-proof seals', 'Fast response time'] },
+    { id: 9, category: 'tools', name: 'Welding Stations', description: 'Advanced TIG/MIG welding stations with digital displays and precise heat control.', image: newProductImg3, features: ['Digital display', 'Multi-process capable', 'Overheat protection', 'Inverter technology'] }
   ];
-
-  const filteredProducts = activeCategory === 'all' 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
 
   const categories = [
     { id: 'all', name: 'All Products' },
@@ -204,73 +35,100 @@ const Products = () => {
     { id: 'custom', name: 'Custom' }
   ];
 
+  const filtered = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
+
   return (
-    <div>
-      {/* Page Header */}
-      <section style={styles.pageHeader}>
-        <div style={styles.container}>
-          <h1 style={styles.pageTitle}>Our Products</h1>
-          <p style={styles.pageSubtitle}>Discover our range of high-quality industrial products</p>
+    <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      <style>{`
+        .products-hero {
+          background: linear-gradient(135deg, #1a3e6f 0%, #2a4f8a 100%);
+          color: #fff; padding: 60px 20px; text-align: center;
+        }
+        .products-hero h1 { font-size: 2.2rem; margin-bottom: 12px; }
+        .products-hero p { font-size: 1rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 60px 0; }
+        .filter-bar {
+          display: flex; gap: 8px; flex-wrap: wrap;
+          justify-content: center; margin-bottom: 36px;
+        }
+        .filter-btn {
+          padding: 9px 16px; border: none; border-radius: 5px;
+          cursor: pointer; font-size: 14px; font-weight: 500;
+          transition: all 0.3s; white-space: nowrap;
+        }
+        .filter-btn.active { background: #1a3e6f; color: #fff; }
+        .filter-btn:not(.active) { background: #f0f0f0; color: #333; }
+        .filter-btn:not(.active):hover { background: #e0e0e0; }
+        .products-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .product-card {
+          background: #fff; border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-8px); }
+        .product-img { width: 100%; height: 220px; object-fit: cover; }
+        .product-body { padding: 20px; }
+        .product-title { color: #1a3e6f; margin-bottom: 8px; font-size: 1.2rem; }
+        .product-desc { color: #666; margin-bottom: 14px; line-height: 1.6; font-size: 0.95rem; }
+        .product-features { list-style: none; padding: 0; margin: 0 0 18px 0; }
+        .feat-item { color: #666; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+        .quote-btn {
+          display: block; width: 100%; padding: 11px 20px;
+          background: #ff6b35; color: #fff;
+          border: none; border-radius: 5px;
+          font-size: 14px; font-weight: bold;
+          cursor: pointer; transition: background 0.3s;
+          text-align: center;
+        }
+        .quote-btn:hover { background: #e55a2b; }
+
+        @media (min-width: 480px) {
+          .products-hero h1 { font-size: 2.8rem; }
+        }
+        @media (min-width: 640px) {
+          .products-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+          .products-grid { grid-template-columns: repeat(3, 1fr); }
+          .filter-btn { font-size: 15px; padding: 10px 20px; }
+        }
+      `}</style>
+
+      <section className="products-hero">
+        <div className="container">
+          <h1>Our Products</h1>
+          <p>Discover our range of high-quality industrial products</p>
         </div>
       </section>
 
-      {/* Products Section */}
-      <section style={styles.section}>
-        <div style={styles.container}>
-          {/* Category Filter */}
-          <div style={styles.categoryFilter}>
-            {categories.map(category => (
-              <button
-                key={category.id}
-                style={{
-                  ...styles.filterBtn,
-                  backgroundColor: activeCategory === category.id ? '#1a3e6f' : '#f0f0f0',
-                  color: activeCategory === category.id ? '#fff' : '#333'
-                }}
-                onClick={() => setActiveCategory(category.id)}
-                onMouseEnter={(e) => {
-                  if (activeCategory !== category.id) {
-                    e.target.style.backgroundColor = '#e0e0e0';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeCategory !== category.id) {
-                    e.target.style.backgroundColor = '#f0f0f0';
-                  }
-                }}
-              >
-                {category.name}
+      <section className="section">
+        <div className="container">
+          <div className="filter-bar">
+            {categories.map(c => (
+              <button key={c.id} className={`filter-btn ${activeCategory === c.id ? 'active' : ''}`} onClick={() => setActiveCategory(c.id)}>
+                {c.name}
               </button>
             ))}
           </div>
-
-          {/* Products Grid */}
-          <div style={styles.productsGrid}>
-            {filteredProducts.map(product => (
-              <div 
-                key={product.id} 
-                style={styles.productCard}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-10px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                <img src={product.image} alt={product.name} style={styles.productImage} />
-                <div style={styles.productContent}>
-                  <h3 style={styles.productTitle}>{product.name}</h3>
-                  <p style={styles.productDesc}>{product.description}</p>
-                  <ul style={styles.productFeatures}>
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} style={styles.featureItem}>
-                        <span style={{ color: '#ff6b35' }}>✓</span> {feature}
-                      </li>
+          <div className="products-grid">
+            {filtered.map(p => (
+              <div key={p.id} className="product-card">
+                <img src={p.image} alt={p.name} className="product-img" />
+                <div className="product-body">
+                  <h3 className="product-title">{p.name}</h3>
+                  <p className="product-desc">{p.description}</p>
+                  <ul className="product-features">
+                    {p.features.map((f, i) => (
+                      <li key={i} className="feat-item"><span style={{ color: '#ff6b35' }}>✓</span> {f}</li>
                     ))}
                   </ul>
-                  <button 
-                    style={styles.btn}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = '#e55a2b'}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = '#ff6b35'}
-                  >
-                    Request Quote
-                  </button>
+                  <button className="quote-btn">Request Quote</button>
                 </div>
               </div>
             ))}
